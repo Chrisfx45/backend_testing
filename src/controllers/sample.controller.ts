@@ -26,4 +26,27 @@ export class SampleController{
         }
         
     }
+    async addNewImage (req : Request, res : Response, next : NextFunction){
+        try{
+            const {file} =req;
+            if(!file) throw new Error("No File Uploaded");
+            
+
+            return res.status(200).send(`File ${file.filename} successfully uploaded`)
+
+        }catch(error){
+            next(error)
+        }
+    }
+    async addNewImages (req : Request, res : Response, next : NextFunction){
+        try{
+            const {files} =req;
+            if(!files?.length) throw new Error("No File Uploaded");
+
+            return res.status(200).send(`Files successfully uploaded`)
+
+        }catch(error){
+            next(error)
+        }
+    }
 }
