@@ -19,6 +19,8 @@ export class SampleRouter{
         uploader("IMG", "/images").single("file"), 
         this.sampleController.addNewImage)
         this.router.post("/multi-upload",uploader("IMG", "/images").array("files", 3), this.sampleController.addNewImages)
+        this.router.post("/send-email", this.sampleController.sendEmail)
+
     }
     getRouter() : Router{
         return this.router;
